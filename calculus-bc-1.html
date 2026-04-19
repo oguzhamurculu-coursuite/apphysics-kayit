@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AP Calculus BC — Series & Taylor Kayıt</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f0f7ff; min-height: 100vh; padding: 2rem 1rem; }
+  .container { max-width: 520px; margin: 0 auto; }
+  .banner { background: #fff; border: 1px solid #b5d4f4; border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; }
+  .tag { display: inline-block; background: #185FA5; color: #fff; font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; letter-spacing: .5px; }
+  .badge-online { display: inline-block; background: #e1f5ee; color: #0f6e56; font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; margin-left: 6px; }
+  .banner h1 { font-size: 20px; font-weight: 700; color: #042C53; line-height: 1.3; margin-bottom: 8px; }
+  .banner p { font-size: 13px; color: #185FA5; line-height: 1.6; }
+  .topics { display: flex; flex-direction: column; gap: 6px; margin: 14px 0 0; }
+  .topic { background: #e6f1fb; border-radius: 10px; padding: 8px 12px; font-size: 12px; color: #042C53; font-weight: 500; }
+  .date-bar { background: #185FA5; color: #e6f1fb; border-radius: 10px; padding: 10px 14px; font-size: 13px; margin-top: 12px; text-align: center; }
+  .form-card { background: #fff; border: 1px solid #b5d4f4; border-radius: 16px; padding: 1.5rem; }
+  .section-title { font-size: 11px; font-weight: 600; color: #888; letter-spacing: .6px; text-transform: uppercase; margin-bottom: 12px; }
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 13px; color: #555; margin-bottom: 5px; }
+  .field input { width: 100%; padding: 10px 12px; border: 1.5px solid #b5d4f4; border-radius: 10px; font-size: 14px; outline: none; transition: border-color .15s; }
+  .field input:focus { border-color: #378ADD; }
+  .err { font-size: 12px; color: #c0392b; margin-top: 4px; display: none; }
+  .btn { width: 100%; padding: 13px; background: #185FA5; color: #fff; border: none; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background .15s; margin-top: 4px; }
+  .btn:hover { background: #0C447C; }
+  .btn:disabled { background: #85b7eb; cursor: not-allowed; }
+  .success { display: none; background: #eaf3de; border: 1px solid #97c459; border-radius: 16px; padding: 2rem; text-align: center; margin-top: 1rem; }
+  .success h2 { color: #27500a; font-size: 18px; margin-bottom: 8px; }
+  .success p { color: #3b6d11; font-size: 14px; }
+  .new-btn { margin-top: 14px; padding: 8px 20px; border: 1.5px solid #3b6d11; background: transparent; color: #27500a; border-radius: 10px; cursor: pointer; font-size: 13px; }
+  .back-link { display: inline-block; font-size: 13px; color: #185FA5; margin-bottom: 1rem; text-decoration: none; }
+  .back-link:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+  <a class="back-link" href="/">← Tüm dersler</a>
+
+  <div class="banner">
+    <div>
+      <div class="tag">AP Calculus BC</div>
+      <div class="badge-online">Online</div>
+    </div>
+    <h1>Series & Taylor — Sınav Öncesi<br>Son Hamle</h1>
+    <p>Sonsuz seriler, Taylor polinomları ve Lagrange hata sınırı — sınavda çıkan her detayı 2 saatte kavramsal olarak bitiriyoruz.</p>
+    <div class="topics">
+      <div class="topic">Infinite Sequences & Series</div>
+      <div class="topic">Taylor Polynomials</div>
+      <div class="topic">Power Series I: Taylor & Maclaurin Series</div>
+      <div class="topic">Power Series II: Geometric Series</div>
+      <div class="topic">Lagrange Error Bound</div>
+    </div>
+    <div class="date-bar">Pazartesi 14 Nisan · 15:30 – 17:30 · Online · 2 saat</div>
+  </div>
+
+  <div class="form-card" id="form-area">
+    <div class="section-title">Kayıt bilgileri</div>
+    <div class="field">
+      <label>Ad Soyad</label>
+      <input type="text" id="inp-name" placeholder="Adınızı girin">
+      <div class="err" id="err-name">Bu alan zorunludur.</div>
+    </div>
+    <div class="field">
+      <label>Telefon numarası</label>
+      <input type="tel" id="inp-phone" placeholder="05xx xxx xx xx">
+      <div class="err" id="err-phone">Geçerli bir numara girin.</div>
+    </div>
+    <div class="field">
+      <label>E-posta <span style="color:#aaa;font-size:12px">(isteğe bağlı)</span></label>
+      <input type="email" id="inp-email" placeholder="ornek@mail.com">
+    </div>
+    <button class="btn" id="submit-btn" onclick="submitForm()">Kaydımı Tamamla</button>
+  </div>
+
+  <div class="success" id="success-area">
+    <h2 id="success-name"></h2>
+    <p id="success-session">Pazartesi 14 Nisan · 15:30 – 17:30</p>
+    <p style="margin-top:8px;font-size:13px">Görüşmek üzere!</p>
+    <button class="new-btn" onclick="resetForm()">Yeni kayıt ekle</button>
+  </div>
+</div>
+
+<script>
+  async function submitForm() {
+    let ok = true;
+    const name = document.getElementById('inp-name').value.trim();
+    const phone = document.getElementById('inp-phone').value.trim();
+    const email = document.getElementById('inp-email').value.trim();
+    if (!name) { document.getElementById('err-name').style.display = 'block'; ok = false; }
+    else document.getElementById('err-name').style.display = 'none';
+    if (!phone || phone.length < 10) { document.getElementById('err-phone').style.display = 'block'; ok = false; }
+    else document.getElementById('err-phone').style.display = 'none';
+    if (!ok) return;
+
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Gönderiliyor...';
+
+    try {
+      const res = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, phone, email, session: 'Pazartesi 14 Nisan · 15:30–17:30 · Calculus BC Series & Taylor' })
+      });
+      const data = await res.json();
+      if (data.success) {
+        document.getElementById('form-area').style.display = 'none';
+        document.getElementById('success-name').textContent = 'Kaydın alındı, ' + name.split(' ')[0] + '!';
+        document.getElementById('success-area').style.display = 'block';
+      } else {
+        alert('Bir hata oluştu, lütfen tekrar deneyin.');
+        btn.disabled = false;
+        btn.textContent = 'Kaydımı Tamamla';
+      }
+    } catch (e) {
+      alert('Bağlantı hatası, lütfen tekrar deneyin.');
+      btn.disabled = false;
+      btn.textContent = 'Kaydımı Tamamla';
+    }
+  }
+
+  function resetForm() {
+    document.getElementById('inp-name').value = '';
+    document.getElementById('inp-phone').value = '';
+    document.getElementById('inp-email').value = '';
+    document.getElementById('form-area').style.display = 'block';
+    document.getElementById('success-area').style.display = 'none';
+    document.getElementById('submit-btn').disabled = false;
+    document.getElementById('submit-btn').textContent = 'Kaydımı Tamamla';
+  }
+</script>
+</body>
+</html>
