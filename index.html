@@ -3,169 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AP Physics 1 — Kavramsal Maraton Kayıt</title>
+<title>Ders Kayıt Sistemi</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f4ff; min-height: 100vh; padding: 2rem 1rem; }
   .container { max-width: 520px; margin: 0 auto; }
-  .banner { background: #fff; border: 1px solid #ded9ff; border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; }
-  .tag { display: inline-block; background: #534AB7; color: #fff; font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; letter-spacing: .5px; }
-  .banner h1 { font-size: 20px; font-weight: 700; color: #1a1560; line-height: 1.3; margin-bottom: 8px; }
-  .banner p { font-size: 13px; color: #534AB7; line-height: 1.6; }
-  .topics { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 14px 0 0; }
-  .topic { background: #eeedfe; border-radius: 10px; padding: 10px 12px; }
-  .topic strong { display: block; font-size: 12px; color: #26215C; margin-bottom: 2px; }
-  .topic span { font-size: 11px; color: #534AB7; }
-  .date-bar { background: #534AB7; color: #eeedfe; border-radius: 10px; padding: 10px 14px; font-size: 13px; margin-top: 12px; text-align: center; }
-  .form-card { background: #fff; border: 1px solid #e5e3ff; border-radius: 16px; padding: 1.5rem; }
-  .section-title { font-size: 11px; font-weight: 600; color: #888; letter-spacing: .6px; text-transform: uppercase; margin-bottom: 12px; }
-  .session-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-  .session { border: 1.5px solid #e0deff; border-radius: 12px; padding: 14px; cursor: pointer; transition: all .15s; }
-  .session:hover { border-color: #7F77DD; background: #f9f8ff; }
-  .session.active { border-color: #534AB7; background: #eeedfe; }
-  .session .label { font-size: 11px; color: #888; margin-bottom: 4px; }
-  .session .time { font-size: 16px; font-weight: 700; color: #1a1560; }
-  .session .range { font-size: 11px; color: #666; margin-top: 2px; }
-  .session .badge { display: inline-block; margin-top: 6px; background: #e1f5ee; color: #0f6e56; font-size: 11px; padding: 2px 8px; border-radius: 20px; }
-  .session.active .time { color: #26215C; }
-  .field { margin-bottom: 14px; }
-  .field label { display: block; font-size: 13px; color: #555; margin-bottom: 5px; }
-  .field input { width: 100%; padding: 10px 12px; border: 1.5px solid #e0deff; border-radius: 10px; font-size: 14px; outline: none; transition: border-color .15s; }
-  .field input:focus { border-color: #7F77DD; }
-  .err { font-size: 12px; color: #c0392b; margin-top: 4px; display: none; }
-  .session-err { font-size: 12px; color: #c0392b; margin: -12px 0 14px; display: none; }
-  .btn { width: 100%; padding: 13px; background: #534AB7; color: #fff; border: none; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background .15s; margin-top: 4px; }
-  .btn:hover { background: #3C3489; }
-  .btn:disabled { background: #afa9ec; cursor: not-allowed; }
-  .success { display: none; background: #eaf3de; border: 1px solid #97c459; border-radius: 16px; padding: 2rem; text-align: center; margin-top: 1rem; }
-  .success h2 { color: #27500a; font-size: 18px; margin-bottom: 8px; }
-  .success p { color: #3b6d11; font-size: 14px; }
-  .new-btn { margin-top: 14px; padding: 8px 20px; border: 1.5px solid #3b6d11; background: transparent; color: #27500a; border-radius: 10px; cursor: pointer; font-size: 13px; }
+  h1 { font-size: 22px; font-weight: 700; color: #1a1560; margin-bottom: 6px; }
+  .sub { font-size: 14px; color: #666; margin-bottom: 1.5rem; }
+  .card { background: #fff; border: 1px solid #e0deff; border-radius: 16px; padding: 1.25rem 1.5rem; margin-bottom: 12px; cursor: pointer; transition: border-color .15s; text-decoration: none; display: block; }
+  .card:hover { border-color: #7F77DD; }
+  .card-top { display: flex; gap: 6px; margin-bottom: 8px; align-items: center; }
+  .card-tag { display: inline-block; color: #fff; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+  .tag-physics { background: #534AB7; }
+  .tag-calculus { background: #185FA5; }
+  .tag-online { background: #0f6e56; }
+  .card-title { font-size: 15px; font-weight: 600; color: #1a1560; margin-bottom: 4px; }
+  .card-date { font-size: 12px; color: #888; }
 </style>
 </head>
 <body>
 <div class="container">
-  <div class="banner">
-    <div class="tag">AP Physics 1 · 6 Mayıs Sınavı</div>
-    <h1>İşlem Değil, Mantık Kazandırır!<br>Kavramsal Maraton</h1>
-    <p>Rotational Dynamics ve Simple Harmonic Motion — mantığıyla, grafiğiyle, tam olarak.</p>
-    <div class="topics">
-      <div class="topic"><strong>Rotational Dynamics</strong><span>Tork · Eylemsizlik · Açısal Momentum</span></div>
-      <div class="topic"><strong>Simple Harmonic Motion</strong><span>Enerji dönüşümleri · Grafik yorumu</span></div>
-    </div>
-    <div class="date-bar">16 Nisan Perşembe &nbsp;·&nbsp; Kontenjan sınırlıdır</div>
-  </div>
+  <h1>Ders Kayıt Sistemi</h1>
+  <p class="sub">Kayıt olmak istediğiniz dersi seçin.</p>
 
-  <div class="form-card" id="form-area">
-    <div class="section-title">Seans seçin</div>
-    <div class="session-grid">
-      <div class="session" id="s-gundu" onclick="selectSession('gundu')">
-        <div class="label">Gündüz seansı</div>
-        <div class="time">11:00 – 13:30</div>
-        <div class="range">Okulda olmayanlar</div>
-        <div class="badge">2.5 saat</div>
-      </div>
-      <div class="session" id="s-aksam" onclick="selectSession('aksam')">
-        <div class="label">Akşam seansı</div>
-        <div class="time">19:30 – 22:00</div>
-        <div class="range">Okul çıkışı</div>
-        <div class="badge">2.5 saat</div>
-      </div>
+  <a class="card" href="/physics1.html">
+    <div class="card-top">
+      <span class="card-tag tag-physics">AP Physics 1</span>
     </div>
-    <div class="session-err" id="session-err">Lütfen bir seans seçin.</div>
+    <div class="card-title">Kavramsal Maraton — Rotational & SHM</div>
+    <div class="card-date">16 Nisan Perşembe · Gündüz 11:00 / Akşam 19:30</div>
+  </a>
 
-    <div class="section-title">Kayıt bilgileri</div>
-    <div class="field">
-      <label>Ad Soyad</label>
-      <input type="text" id="inp-name" placeholder="Adınızı girin">
-      <div class="err" id="err-name">Bu alan zorunludur.</div>
+  <a class="card" href="/calculus-bc-1.html">
+    <div class="card-top">
+      <span class="card-tag tag-calculus">AP Calculus BC</span>
+      <span class="card-tag tag-online">Online</span>
     </div>
-    <div class="field">
-      <label>Telefon numarası</label>
-      <input type="tel" id="inp-phone" placeholder="05xx xxx xx xx">
-      <div class="err" id="err-phone">Geçerli bir numara girin.</div>
-    </div>
-    <div class="field">
-      <label>E-posta <span style="color:#aaa;font-size:12px">(isteğe bağlı)</span></label>
-      <input type="email" id="inp-email" placeholder="ornek@mail.com">
-    </div>
-    <button class="btn" id="submit-btn" onclick="submitForm()">Kaydımı Tamamla</button>
-  </div>
+    <div class="card-title">Series & Taylor — Sınav Öncesi Son Hamle</div>
+    <div class="card-date">Pazartesi 14 Nisan · 15:30 – 17:30</div>
+  </a>
 
-  <div class="success" id="success-area">
-    <h2 id="success-name"></h2>
-    <p id="success-session"></p>
-    <p style="margin-top:8px;font-size:13px">Görüşmek üzere!</p>
-    <button class="new-btn" onclick="resetForm()">Yeni kayıt ekle</button>
-  </div>
+  <a class="card" href="/calculus-bc-2.html">
+    <div class="card-top">
+      <span class="card-tag tag-calculus">AP Calculus BC</span>
+      <span class="card-tag tag-online">Online</span>
+    </div>
+    <div class="card-title">Parametric, Polar & Vector — Sınav Öncesi Son Hamle</div>
+    <div class="card-date">Salı 15 Nisan · 14:30 – 16:30</div>
+  </a>
+
 </div>
-
-<script>
-  let selectedSession = null;
-
-  function selectSession(s) {
-    selectedSession = s;
-    document.getElementById('s-gundu').classList.toggle('active', s === 'gundu');
-    document.getElementById('s-aksam').classList.toggle('active', s === 'aksam');
-    document.getElementById('session-err').style.display = 'none';
-  }
-
-  async function submitForm() {
-    let ok = true;
-    if (!selectedSession) {
-      document.getElementById('session-err').style.display = 'block';
-      ok = false;
-    }
-    const name = document.getElementById('inp-name').value.trim();
-    const phone = document.getElementById('inp-phone').value.trim();
-    const email = document.getElementById('inp-email').value.trim();
-    if (!name) { document.getElementById('err-name').style.display = 'block'; ok = false; }
-    else document.getElementById('err-name').style.display = 'none';
-    if (!phone || phone.length < 10) { document.getElementById('err-phone').style.display = 'block'; ok = false; }
-    else document.getElementById('err-phone').style.display = 'none';
-    if (!ok) return;
-
-    const btn = document.getElementById('submit-btn');
-    btn.disabled = true;
-    btn.textContent = 'Gönderiliyor...';
-
-    try {
-      const res = await fetch('/api/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, phone, email, session: selectedSession })
-      });
-      const data = await res.json();
-      if (data.success) {
-        document.getElementById('form-area').style.display = 'none';
-        const sLabel = selectedSession === 'gundu' ? 'Gündüz seansı (11:00–13:30)' : 'Akşam seansı (19:30–22:00)';
-        document.getElementById('success-name').textContent = 'Kaydın alındı, ' + name.split(' ')[0] + '!';
-        document.getElementById('success-session').textContent = 'Seans: ' + sLabel;
-        document.getElementById('success-area').style.display = 'block';
-      } else {
-        alert('Bir hata oluştu, lütfen tekrar deneyin.');
-        btn.disabled = false;
-        btn.textContent = 'Kaydımı Tamamla';
-      }
-    } catch (e) {
-      alert('Bağlantı hatası, lütfen tekrar deneyin.');
-      btn.disabled = false;
-      btn.textContent = 'Kaydımı Tamamla';
-    }
-  }
-
-  function resetForm() {
-    selectedSession = null;
-    document.getElementById('s-gundu').classList.remove('active');
-    document.getElementById('s-aksam').classList.remove('active');
-    document.getElementById('inp-name').value = '';
-    document.getElementById('inp-phone').value = '';
-    document.getElementById('inp-email').value = '';
-    document.getElementById('form-area').style.display = 'block';
-    document.getElementById('success-area').style.display = 'none';
-    document.getElementById('submit-btn').disabled = false;
-    document.getElementById('submit-btn').textContent = 'Kaydımı Tamamla';
-  }
-</script>
 </body>
 </html>
