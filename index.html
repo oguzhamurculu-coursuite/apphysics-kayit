@@ -8,44 +8,35 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #fff; min-height: 100vh; padding: 2rem 1rem; }
   .container { max-width: 780px; margin: 0 auto; }
-
   .header { display: flex; align-items: center; gap: 14px; margin-bottom: 1.5rem; }
   .header img { width: 52px; height: 52px; object-fit: contain; }
   .header-text h1 { font-size: 24px; font-weight: 700; color: #1a1560; line-height: 1.2; }
   .header-text p { font-size: 14px; color: #888; margin-top: 2px; }
-
   .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
   @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
   @media (min-width: 480px) and (max-width: 700px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-
   .course { background: #fff; border: 2px solid #1D9E75; border-radius: 16px; padding: 1.2rem 1.3rem; display: flex; flex-direction: column; }
   .course.full { border-color: #e24b4a; opacity: .65; }
-
   .course-top { display: flex; gap: 5px; margin-bottom: 10px; align-items: center; flex-wrap: wrap; }
   .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 20px; }
   .tag-physics { background: #534AB7; color: #fff; }
   .tag-calculus { background: #185FA5; color: #fff; }
   .tag-online { background: #0f6e56; color: #e1f5ee; }
   .tag-full { background: #f09595; color: #791F1F; }
-
   .course-title { font-size: 15px; font-weight: 600; color: #1a1560; margin-bottom: 5px; line-height: 1.35; }
   .course.full .course-title { color: #aaa; }
   .course-date { font-size: 12px; color: #777; margin-bottom: 12px; }
-
   .topics { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; flex: 1; }
   .topic { border-radius: 6px; padding: 5px 9px; font-size: 12px; font-weight: 500; }
   .topic-physics { background: #EEEDFE; color: #26215C; }
   .topic-calculus { background: #E6F1FB; color: #042C53; }
   .topic-full { background: #f5f5f5; color: #bbb; }
-
   .full-banner { background: #fff0f0; border-radius: 8px; padding: 9px; text-align: center; font-size: 13px; color: #e24b4a; font-weight: 500; margin-top: auto; }
-
   .form-toggle { color: #fff; border: none; border-radius: 10px; padding: 10px 14px; font-size: 14px; font-weight: 600; cursor: pointer; width: 100%; transition: background .15s; margin-top: auto; }
   .form-toggle-physics { background: #534AB7; }
   .form-toggle-physics:hover { background: #3C3489; }
   .form-toggle-calculus { background: #185FA5; }
   .form-toggle-calculus:hover { background: #0C447C; }
-
   .register-form { display: none; margin-top: 14px; border-top: 1.5px solid #9FE1CB; padding-top: 14px; }
   .register-form.open { display: block; }
   .section-title { font-size: 11px; font-weight: 600; color: #888; letter-spacing: .6px; text-transform: uppercase; margin-bottom: 10px; }
@@ -82,6 +73,7 @@
     <div class="course full">
       <div class="course-top">
         <span class="tag tag-physics">AP Physics 1</span>
+        <span class="tag tag-online">Online</span>
         <span class="tag tag-full">Dolu</span>
       </div>
       <div class="course-title">Conceptual Marathon — Rotational & SHM</div>
@@ -164,6 +156,84 @@
         <div id="bc3-success" class="success-box" style="display:none">
           <h3 id="bc3-success-name"></h3>
           <p>Tue, Apr 21 · 14:30–16:30</p>
+          <p style="margin-top:3px">Görüşmek üzere!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Calculus BC 4 — AKTİF -->
+    <div class="course">
+      <div class="course-top">
+        <span class="tag tag-calculus">AP Calculus BC</span>
+        <span class="tag tag-online">Online</span>
+      </div>
+      <div class="course-title">Series & Taylor</div>
+      <div class="course-date">Wed, Apr 22 · 17:00–19:00 · 2h</div>
+      <div class="topics">
+        <div class="topic topic-calculus">Infinite Sequences & Series</div>
+        <div class="topic topic-calculus">Taylor & Maclaurin</div>
+        <div class="topic topic-calculus">Power Series I & II</div>
+        <div class="topic topic-calculus">Lagrange Error Bound</div>
+      </div>
+      <button class="form-toggle form-toggle-calculus" id="toggle-bc4" onclick="toggleForm('bc4')">Kayıt Ol</button>
+      <div class="register-form" id="form-bc4">
+        <div class="section-title">Kayıt bilgileri</div>
+        <div class="field">
+          <label>Ad Soyad</label>
+          <input type="text" id="bc4-name" placeholder="Adınızı girin">
+          <div class="err" id="bc4-err-name">Bu alan zorunludur.</div>
+        </div>
+        <div class="field">
+          <label>Telefon</label>
+          <input type="tel" id="bc4-phone" placeholder="05xx xxx xx xx">
+          <div class="err" id="bc4-err-phone">Geçerli bir numara girin.</div>
+        </div>
+        <div class="field">
+          <label>E-posta <span style="color:#aaa;font-size:12px">(isteğe bağlı)</span></label>
+          <input type="email" id="bc4-email" placeholder="ornek@mail.com">
+        </div>
+        <button class="submit-btn submit-btn-calculus" id="bc4-submit" onclick="submitForm('bc4', 'Wednesday April 22 · 17:00–19:00 · Calculus BC Series & Taylor')">Kaydımı Tamamla</button>
+        <div id="bc4-success" class="success-box" style="display:none">
+          <h3 id="bc4-success-name"></h3>
+          <p>Wed, Apr 22 · 17:00–19:00</p>
+          <p style="margin-top:3px">Görüşmek üzere!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Physics 1 #2 — AKTİF -->
+    <div class="course">
+      <div class="course-top">
+        <span class="tag tag-physics">AP Physics 1</span>
+        <span class="tag tag-online">Online</span>
+      </div>
+      <div class="course-title">Rotational Motion and Simple Harmonic Motion</div>
+      <div class="course-date">Thu, Apr 23 · 17:00–19:00 · 2h</div>
+      <div class="topics">
+        <div class="topic topic-physics">Rotational Motion</div>
+        <div class="topic topic-physics">SHM</div>
+      </div>
+      <button class="form-toggle form-toggle-physics" id="toggle-ph2" onclick="toggleForm('ph2')">Kayıt Ol</button>
+      <div class="register-form" id="form-ph2">
+        <div class="section-title">Kayıt bilgileri</div>
+        <div class="field">
+          <label>Ad Soyad</label>
+          <input type="text" id="ph2-name" placeholder="Adınızı girin">
+          <div class="err" id="ph2-err-name">Bu alan zorunludur.</div>
+        </div>
+        <div class="field">
+          <label>Telefon</label>
+          <input type="tel" id="ph2-phone" placeholder="05xx xxx xx xx">
+          <div class="err" id="ph2-err-phone">Geçerli bir numara girin.</div>
+        </div>
+        <div class="field">
+          <label>E-posta <span style="color:#aaa;font-size:12px">(isteğe bağlı)</span></label>
+          <input type="email" id="ph2-email" placeholder="ornek@mail.com">
+        </div>
+        <button class="submit-btn submit-btn-physics" id="ph2-submit" onclick="submitForm('ph2', 'Thursday April 23 · 17:00–19:00 · Physics 1 Rotational Motion & SHM')">Kaydımı Tamamla</button>
+        <div id="ph2-success" class="success-box" style="display:none">
+          <h3 id="ph2-success-name"></h3>
+          <p>Thu, Apr 23 · 17:00–19:00</p>
           <p style="margin-top:3px">Görüşmek üzere!</p>
         </div>
       </div>
