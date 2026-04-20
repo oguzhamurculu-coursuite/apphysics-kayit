@@ -54,11 +54,11 @@
   .success-box { background: #E1F5EE; border: 1px solid #5DCAA5; border-radius: 8px; padding: 12px; text-align: center; margin-top: 10px; }
   .success-box h3 { font-size: 14px; margin-bottom: 3px; color: #085041; }
   .success-box p { font-size: 13px; color: #0F6E56; }
+  .loading { text-align: center; padding: 3rem; color: #888; font-size: 14px; }
 </style>
 </head>
 <body>
 <div class="container">
-
   <div class="header">
     <img src="/logo.jpeg" alt="Oğuz Aras logo">
     <div class="header-text">
@@ -66,183 +66,83 @@
       <p>Kayıt olmak istediğiniz dersi seçin.</p>
     </div>
   </div>
-
-  <div class="grid">
-
-    <!-- Physics 1 — DOLU -->
-    <div class="course full">
-      <div class="course-top">
-        <span class="tag tag-physics">AP Physics 1</span>
-        <span class="tag tag-online">Online</span>
-        <span class="tag tag-full">Dolu</span>
-      </div>
-      <div class="course-title">Conceptual Marathon — Rotational & SHM</div>
-      <div class="course-date">Thu, Apr 16 · 11:00 / 19:30</div>
-      <div class="topics">
-        <div class="topic topic-full">Rotational Dynamics</div>
-        <div class="topic topic-full">Simple Harmonic Motion</div>
-        <div class="topic topic-full">Logic-Based Questions</div>
-      </div>
-      <div class="full-banner">Dolu</div>
-    </div>
-
-    <!-- Calculus BC 1 — DOLU -->
-    <div class="course full">
-      <div class="course-top">
-        <span class="tag tag-calculus">AP Calculus BC</span>
-        <span class="tag tag-online">Online</span>
-        <span class="tag tag-full">Dolu</span>
-      </div>
-      <div class="course-title">Series & Taylor</div>
-      <div class="course-date">Mon, Apr 14 · 15:30–17:30</div>
-      <div class="topics">
-        <div class="topic topic-full">Infinite Sequences & Series</div>
-        <div class="topic topic-full">Taylor & Maclaurin</div>
-        <div class="topic topic-full">Power Series I & II</div>
-        <div class="topic topic-full">Lagrange Error Bound</div>
-      </div>
-      <div class="full-banner">Dolu</div>
-    </div>
-
-    <!-- Calculus BC 2 — DOLU -->
-    <div class="course full">
-      <div class="course-top">
-        <span class="tag tag-calculus">AP Calculus BC</span>
-        <span class="tag tag-online">Online</span>
-        <span class="tag tag-full">Dolu</span>
-      </div>
-      <div class="course-title">Parametric, Polar & Vector</div>
-      <div class="course-date">Tue, Apr 15 · 14:30–16:30</div>
-      <div class="topics">
-        <div class="topic topic-full">Parametric & Vector Calculus</div>
-        <div class="topic topic-full">Polar Intro & Derivatives</div>
-        <div class="topic topic-full">Polar Area</div>
-      </div>
-      <div class="full-banner">Dolu</div>
-    </div>
-
-    <!-- Physics 1 #2 — AKTİF -->
-    <div class="course">
-      <div class="course-top">
-        <span class="tag tag-physics">AP Physics 1</span>
-        <span class="tag tag-online">Online</span>
-      </div>
-      <div class="course-title">Rotational Motion and Simple Harmonic Motion</div>
-      <div class="course-date">Mon, Apr 21 · 14:30–16:30 · 2h</div>
-      <div class="topics">
-        <div class="topic topic-physics">Rotational Motion</div>
-        <div class="topic topic-physics">SHM</div>
-      </div>
-      <button class="form-toggle form-toggle-physics" id="toggle-ph2" onclick="toggleForm('ph2')">Kayıt Ol</button>
-      <div class="register-form" id="form-ph2">
-        <div class="section-title">Kayıt bilgileri</div>
-        <div class="field">
-          <label>Ad Soyad</label>
-          <input type="text" id="ph2-name" placeholder="Adınızı girin">
-          <div class="err" id="ph2-err-name">Bu alan zorunludur.</div>
-        </div>
-        <div class="field">
-          <label>Telefon</label>
-          <input type="tel" id="ph2-phone" placeholder="05xx xxx xx xx">
-          <div class="err" id="ph2-err-phone">Geçerli bir numara girin.</div>
-        </div>
-        <div class="field">
-          <label>E-posta <span style="color:#aaa;font-size:12px">(isteğe bağlı)</span></label>
-          <input type="email" id="ph2-email" placeholder="ornek@mail.com">
-        </div>
-        <button class="submit-btn submit-btn-physics" id="ph2-submit" onclick="submitForm('ph2', 'Monday April 21 · 14:30–16:30 · Physics 1 Rotational Motion & SHM')">Kaydımı Tamamla</button>
-        <div id="ph2-success" class="success-box" style="display:none">
-          <h3 id="ph2-success-name"></h3>
-          <p>Mon, Apr 21 · 14:30–16:30</p>
-          <p style="margin-top:3px">Görüşmek üzere!</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Calculus BC 3 — AKTİF -->
-    <div class="course">
-      <div class="course-top">
-        <span class="tag tag-calculus">AP Calculus BC</span>
-        <span class="tag tag-online">Online</span>
-      </div>
-      <div class="course-title">Series & Taylor</div>
-      <div class="course-date">Fri, Apr 25 · Time TBA</div>
-      <div class="topics">
-        <div class="topic topic-calculus">Infinite Sequences & Series</div>
-        <div class="topic topic-calculus">Taylor & Maclaurin</div>
-        <div class="topic topic-calculus">Power Series I & II</div>
-        <div class="topic topic-calculus">Lagrange Error Bound</div>
-      </div>
-      <button class="form-toggle form-toggle-calculus" id="toggle-bc3" onclick="toggleForm('bc3')">Kayıt Ol</button>
-      <div class="register-form" id="form-bc3">
-        <div class="section-title">Kayıt bilgileri</div>
-        <div class="field">
-          <label>Ad Soyad</label>
-          <input type="text" id="bc3-name" placeholder="Adınızı girin">
-          <div class="err" id="bc3-err-name">Bu alan zorunludur.</div>
-        </div>
-        <div class="field">
-          <label>Telefon</label>
-          <input type="tel" id="bc3-phone" placeholder="05xx xxx xx xx">
-          <div class="err" id="bc3-err-phone">Geçerli bir numara girin.</div>
-        </div>
-        <div class="field">
-          <label>E-posta <span style="color:#aaa;font-size:12px">(isteğe bağlı)</span></label>
-          <input type="email" id="bc3-email" placeholder="ornek@mail.com">
-        </div>
-        <button class="submit-btn submit-btn-calculus" id="bc3-submit" onclick="submitForm('bc3', 'Friday April 25 · TBA · Calculus BC Series & Taylor')">Kaydımı Tamamla</button>
-        <div id="bc3-success" class="success-box" style="display:none">
-          <h3 id="bc3-success-name"></h3>
-          <p>Fri, Apr 25 · Time TBA</p>
-          <p style="margin-top:3px">Görüşmek üzere!</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Calculus BC 4 — AKTİF -->
-    <div class="course">
-      <div class="course-top">
-        <span class="tag tag-calculus">AP Calculus BC</span>
-        <span class="tag tag-online">Online</span>
-      </div>
-      <div class="course-title">Series & Taylor</div>
-      <div class="course-date">Wed, Apr 22 · 17:00–19:00 · 2h</div>
-      <div class="topics">
-        <div class="topic topic-calculus">Infinite Sequences & Series</div>
-        <div class="topic topic-calculus">Taylor & Maclaurin</div>
-        <div class="topic topic-calculus">Power Series I & II</div>
-        <div class="topic topic-calculus">Lagrange Error Bound</div>
-      </div>
-      <button class="form-toggle form-toggle-calculus" id="toggle-bc4" onclick="toggleForm('bc4')">Kayıt Ol</button>
-      <div class="register-form" id="form-bc4">
-        <div class="section-title">Kayıt bilgileri</div>
-        <div class="field">
-          <label>Ad Soyad</label>
-          <input type="text" id="bc4-name" placeholder="Adınızı girin">
-          <div class="err" id="bc4-err-name">Bu alan zorunludur.</div>
-        </div>
-        <div class="field">
-          <label>Telefon</label>
-          <input type="tel" id="bc4-phone" placeholder="05xx xxx xx xx">
-          <div class="err" id="bc4-err-phone">Geçerli bir numara girin.</div>
-        </div>
-        <div class="field">
-          <label>E-posta <span style="color:#aaa;font-size:12px">(isteğe bağlı)</span></label>
-          <input type="email" id="bc4-email" placeholder="ornek@mail.com">
-        </div>
-        <button class="submit-btn submit-btn-calculus" id="bc4-submit" onclick="submitForm('bc4', 'Wednesday April 22 · 17:00–19:00 · Calculus BC Series & Taylor')">Kaydımı Tamamla</button>
-        <div id="bc4-success" class="success-box" style="display:none">
-          <h3 id="bc4-success-name"></h3>
-          <p>Wed, Apr 22 · 17:00–19:00</p>
-          <p style="margin-top:3px">Görüşmek üzere!</p>
-        </div>
-      </div>
-    </div>
-
+  <div class="grid" id="grid">
+    <div class="loading" style="grid-column:1/-1">Dersler yükleniyor...</div>
   </div>
 </div>
 
 <script>
+async function loadCourses() {
+  try {
+    const res = await fetch('/api/courses');
+    const courses = await res.json();
+    renderCourses(courses);
+  } catch(e) {
+    document.getElementById('grid').innerHTML = '<div class="loading" style="grid-column:1/-1">Yüklenirken hata oluştu.</div>';
+  }
+}
+
+function renderCourses(courses) {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = courses.map(c => {
+    const topicClass = c.full ? 'topic-full' : `topic-${c.subject}`;
+    const dateStr = c.time === 'TBA' ? `${c.date} · Time TBA` : `${c.date} · ${c.time}${c.duration ? ' · ' + c.duration : ''}`;
+    const sessionLabel = `${c.date} · ${c.time} · ${c.subject === 'physics' ? 'AP Physics 1' : 'AP Calculus BC'} ${c.title}`;
+
+    if (c.full) {
+      return `
+        <div class="course full">
+          <div class="course-top">
+            <span class="tag tag-${c.subject}">${c.subject === 'physics' ? 'AP Physics 1' : 'AP Calculus BC'}</span>
+            ${c.online ? '<span class="tag tag-online">Online</span>' : ''}
+            <span class="tag tag-full">Dolu</span>
+          </div>
+          <div class="course-title">${c.title}</div>
+          <div class="course-date">${dateStr}</div>
+          <div class="topics">${c.topics.map(t => `<div class="topic topic-full">${t}</div>`).join('')}</div>
+          <div class="full-banner">Dolu</div>
+        </div>`;
+    }
+
+    if (!c.active) return '';
+
+    return `
+      <div class="course">
+        <div class="course-top">
+          <span class="tag tag-${c.subject}">${c.subject === 'physics' ? 'AP Physics 1' : 'AP Calculus BC'}</span>
+          ${c.online ? '<span class="tag tag-online">Online</span>' : ''}
+        </div>
+        <div class="course-title">${c.title}</div>
+        <div class="course-date">${dateStr}</div>
+        <div class="topics">${c.topics.map(t => `<div class="topic topic-${c.subject}">${t}</div>`).join('')}</div>
+        <button class="form-toggle form-toggle-${c.subject}" id="toggle-${c.id}" onclick="toggleForm('${c.id}')">Kayıt Ol</button>
+        <div class="register-form" id="form-${c.id}">
+          <div class="section-title">Kayıt bilgileri</div>
+          <div class="field">
+            <label>Ad Soyad</label>
+            <input type="text" id="${c.id}-name" placeholder="Adınızı girin">
+            <div class="err" id="${c.id}-err-name">Bu alan zorunludur.</div>
+          </div>
+          <div class="field">
+            <label>Telefon</label>
+            <input type="tel" id="${c.id}-phone" placeholder="05xx xxx xx xx">
+            <div class="err" id="${c.id}-err-phone">Geçerli bir numara girin.</div>
+          </div>
+          <div class="field">
+            <label>E-posta <span style="color:#aaa;font-size:12px">(isteğe bağlı)</span></label>
+            <input type="email" id="${c.id}-email" placeholder="ornek@mail.com">
+          </div>
+          <button class="submit-btn submit-btn-${c.subject}" id="${c.id}-submit" onclick="submitForm('${c.id}', '${sessionLabel}')">Kaydımı Tamamla</button>
+          <div id="${c.id}-success" class="success-box" style="display:none">
+            <h3 id="${c.id}-success-name"></h3>
+            <p>${dateStr}</p>
+            <p style="margin-top:3px">Görüşmek üzere!</p>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
 function toggleForm(id) {
   const form = document.getElementById('form-' + id);
   const btn = document.getElementById('toggle-' + id);
@@ -282,12 +182,14 @@ async function submitForm(id, session) {
       btn.disabled = false;
       btn.textContent = 'Kaydımı Tamamla';
     }
-  } catch (e) {
+  } catch(e) {
     alert('Bağlantı hatası, lütfen tekrar deneyin.');
     btn.disabled = false;
     btn.textContent = 'Kaydımı Tamamla';
   }
 }
+
+loadCourses();
 </script>
 </body>
 </html>
