@@ -12,8 +12,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Eksik bilgi' });
   }
 
-  const sessionLabel = session === 'gundu' ? 'Gündüz (11:00–13:30)' : 'Akşam (19:30–22:00)';
-  const message = `🎯 Yeni Kayıt!\n\n👤 ${name}\n📞 ${phone}${email ? '\n📧 ' + email : ''}\n🕐 ${sessionLabel}\n\n#APPhysics1`;
+  const message = `🎯 Yeni Kayıt!\n\n📚 ${session}\n\n👤 ${name}\n📞 ${phone}${email ? '\n📧 ' + email : ''}`;
 
   const TELEGRAM_TOKEN = process.env.TELEGRAM_TOKEN;
   const CHAT_ID = process.env.CHAT_ID;
